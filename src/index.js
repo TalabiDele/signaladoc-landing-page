@@ -10,8 +10,8 @@ const root = createRoot(rootElement);
 
 root.render(
   <AuthProvider>
-    <Router>
-      <App />
-    </Router>
+    {/* <Router> */}
+    <App />
+    {/* </Router> */}
   </AuthProvider>
 );
