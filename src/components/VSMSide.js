@@ -22,7 +22,7 @@ const VSMSide = () => {
         } bg-gradient-to-b from-grad-light to-grad-dark text-[20px] text-white w-2/4 py-4 rounded-md mt-5 mx-auto hidden xs:block ss:block`}
         onClick={() => setShowBg(false)}
       >
-        Start Consulting
+        Get Started
       </button>
     </>
   );
