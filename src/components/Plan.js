@@ -79,14 +79,13 @@ const Plan = () => {
               </div>
 
               <ul className="text-[20px] mb-5">
-                <li className=" list-disc mb-3">Family Account</li>
+                <li className=" list-disc mb-3">Access to Qualified Doctors</li>
                 <li className=" list-disc mb-3">
-                  Unlimited Chat, Audio & Video Consultation
+                  Audio, Chat and Video Consultation
                 </li>
-                <li className=" list-disc mb-3">
-                  Book Appointment & Get Prescription
-                </li>
-                <li className=" list-disc mb-3">Personalised family EHR</li>
+                <li className=" list-disc mb-3">Appointment Booking</li>
+                <li className=" list-disc mb-3">Get Prescriptions</li>
+                <li className=" list-disc mb-3">Personalized EHR</li>
               </ul>
 
               <button

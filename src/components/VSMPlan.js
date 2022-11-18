@@ -75,14 +75,10 @@ const VSMPlan = () => {
               </div>
 
               <ul className="text-[20px] mb-5">
-                <li className=" list-disc mb-3">Family Account</li>
-                <li className=" list-disc mb-3">
-                  Unlimited Chat, Audio & Video Consultation
-                </li>
-                <li className=" list-disc mb-3">
-                  Book Appointment & Get Prescription
-                </li>
-                <li className=" list-disc mb-3">Personalised family EHR</li>
+                <li className=" list-disc mb-3">Respiratory Rate</li>
+                <li className=" list-disc mb-3">Mental Stress Levels</li>
+                <li className=" list-disc mb-3">Oxygen Saturation</li>
+                <li className=" list-disc mb-3">Blood Pressure</li>
               </ul>
 
               <button
