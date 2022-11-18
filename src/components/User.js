@@ -16,6 +16,12 @@ const User = () => {
     setError,
     approved,
     setApproved,
+    isForgot,
+    isReset,
+    isCodeReset,
+    setIsForgot,
+    setDetails,
+    setUserExists,
   } = useContext(AuthContext);
 
   useEffect(() => {
@@ -55,6 +61,11 @@ const User = () => {
     }
   };
 
+  const handleForgot = () => {
+    setIsForgot(true);
+    setUserExists(false);
+  };
+
   return (
     <div>
       <div className="" onSubmit={handleVerifyUser}>
@@ -88,8 +99,15 @@ const User = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="**********"
-            className=" border-none bg-input-blue rounded-md py-5 w-3/4 mb-10"
+            className=" border-none bg-input-blue rounded-md py-5 w-3/4 mb-2"
           />
+
+          <p
+            className=" cursor-pointer font-bold mb-4 hover:text-primary"
+            onClick={handleForgot}
+          >
+            Forgot Password?
+          </p>
 
           {loading ? (
             <button

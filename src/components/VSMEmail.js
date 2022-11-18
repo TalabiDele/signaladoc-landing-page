@@ -8,10 +8,11 @@ import VSMPlan from "./VSMPlan";
 import VSMCheckout from "./VSMCheckout";
 import VSMSide from "./VSMSide";
 import VSMSuccess from "./VSMSuccess";
+import ForgotVsmPassword from "./ForgotPassword";
+import CodeReset from "./CodeReset";
+import VsmReset from "./VsmReset";
 
 const VSMEmail = () => {
-  const [username, setUsername] = useState("");
-
   const { user, showBg, setShowBg } = useContext(AuthContext);
 
   useEffect(() => {
@@ -51,6 +52,11 @@ const VSMEmail = () => {
     setApproved,
     loading,
     setLoading,
+    isForgot,
+    username,
+    setUsername,
+    isCodeReset,
+    isReset,
   } = useContext(AuthContext);
 
   const handleEmailVerify = (e) => {
@@ -255,6 +261,12 @@ const VSMEmail = () => {
           {isCheckout && <VSMCheckout />}
 
           {isSuccess && <VSMSuccess />}
+
+          {isForgot && <ForgotVsmPassword />}
+
+          {isCodeReset && <CodeReset />}
+
+          {isReset && <VsmReset />}
         </div>
       </div>
     </div>

@@ -16,6 +16,8 @@ const VSMUser = () => {
     approved,
     username,
     setUsername,
+    setIsForgot,
+    setUserExists,
   } = useContext(AuthContext);
 
   useEffect(() => {
@@ -55,6 +57,11 @@ const VSMUser = () => {
     }
   };
 
+  const handleForgot = () => {
+    setIsForgot(true);
+    setUserExists(false);
+  };
+
   return (
     <div>
       <div className="" onSubmit={handleVerifyUser}>
@@ -88,8 +95,15 @@ const VSMUser = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="**********"
-            className=" border-none bg-input-blue rounded-md py-5 w-3/4 mb-10"
+            className=" border-none bg-input-blue rounded-md py-5 w-3/4 mb-2"
           />
+
+          <p
+            className=" cursor-pointer font-bold mb-4 hover:text-primary"
+            onClick={handleForgot}
+          >
+            Forgot Password?
+          </p>
 
           <button className="bg-gradient-to-b from-grad-light to-grad-dark text-[20px] text-white w-1/4 py-4 rounded-md">
             Next

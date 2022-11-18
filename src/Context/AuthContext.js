@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { API_URL, TELEMEDICINE_URL } from "../Config";
+import { API_URL, AUTH_API, TELEMEDICINE_URL } from "../Config";
 import axios from "axios";
 
 const AuthContext = createContext();
@@ -28,6 +28,10 @@ export const AuthProvider = ({ children }) => {
   const [ref, setRef] = useState();
   const [isSuccess, setIsSuccess] = useState(false);
   const [username, setUsername] = useState("");
+  const [isForgot, setIsForgot] = useState(false);
+  const [isReset, setIsReset] = useState(false);
+  const [isCodeReset, setIsCodeReset] = useState(false);
+  const [isVsm, setIsVsm] = useState(false);
 
   const validateEmail = async ({ username }) => {
     setLoading(true);
@@ -457,6 +461,147 @@ export const AuthProvider = ({ children }) => {
     console.log(data);
   };
 
+  const forgotPassword = async ({ username }) => {
+    setLoading(true);
+
+    const res = await fetch(`${AUTH_API}/forgot-password`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username }),
+    });
+
+    const data = await res.json();
+
+    setUserId(data.user_id);
+
+    if (res.ok) {
+      setApproved(true);
+      setMessage(data.message);
+      setEmailCode(data.code);
+      setUserId(data.user_id);
+
+      console.log(data.user_id);
+
+      setTimeout(() => {
+        setApproved(false);
+        setIsCodeReset(true);
+        setIsForgot(false);
+      }, 3000);
+    } else {
+      setError(true);
+      setMessage(data.error);
+
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+    }
+    setUserId(data.user_id);
+
+    setLoading(false);
+
+    console.log(data);
+  };
+
+  const resetVsmPassword = async ({ userId, password }) => {
+    setLoading(true);
+
+    const res = await fetch(`${API_URL}/user/forgot-password/reset`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user_id: userId, password }),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      setApproved(true);
+      setMessage("Password reset successful! You can now login");
+
+      setTimeout(() => {
+        setApproved(false);
+        setUserExists(true);
+        setIsCodeReset(false);
+        setIsReset(false);
+      }, 4000);
+    } else {
+      setError(true);
+      setMessage(data.password[0]);
+
+      setTimeout(() => {
+        setError(false);
+      }, 7000);
+    }
+
+    setLoading(false);
+
+    console.log(data);
+  };
+
+  const resetTelePassword = async ({ userId, password }) => {
+    setLoading(true);
+
+    const res = await fetch(`${TELEMEDICINE_URL}/user/forgot-password/reset`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user_id: userId, password }),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      setApproved(true);
+      setMessage("Password reset successful! You can now login");
+
+      setTimeout(() => {
+        setApproved(false);
+        setUserExists(true);
+        setIsReset(false);
+      }, 4000);
+    } else {
+      setError(true);
+      setMessage(data.password[0]);
+
+      setTimeout(() => {
+        setError(false);
+      }, 7000);
+    }
+
+    setLoading(false);
+
+    console.log(data);
+  };
+
+  const resendCode = async ({ userId }) => {
+    setLoading(true);
+
+    const res = await fetch(`${AUTH_API}/forgot-password/resend-code`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: userId }),
+    });
+
+    const data = await res.json();
+
+    setIsCodeReset(true);
+
+    setApproved(true);
+    setMessage(data.message);
+
+    setTimeout(() => {
+      setApproved(false);
+    }, 4000);
+
+    console.log(data);
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -511,6 +656,16 @@ export const AuthProvider = ({ children }) => {
         registerTele,
         username,
         setUsername,
+        forgotPassword,
+        resetVsmPassword,
+        resetTelePassword,
+        isForgot,
+        setIsForgot,
+        isReset,
+        setIsReset,
+        setIsCodeReset,
+        isCodeReset,
+        resendCode,
       }}
     >
       {children}

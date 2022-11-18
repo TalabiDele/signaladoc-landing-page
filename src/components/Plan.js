@@ -66,7 +66,7 @@ const Plan = () => {
           {plans && (
             <div className=" grid justify-items-center bg-gradient-to-b from-grad-light to-grad-dark text-white w-2/4 rounded-lg px-10 shadow-xl py-10 mx-auto ss:w-full xs:w-full sm:w-full sm:py-5 sm:px-10 lg:py-5 lg:w-full">
               <h2 className=" text-[24px] mb-5 capitalize">
-                {plans.type_string}
+                Telemedicine <br /> Pay As You Go
               </h2>
               <div className=" h-[10rem] w-[10rem] rounded-full bg-white text-primary grid text-center items-center mb-10 sm:mb-5">
                 <p className=" text-center text-[28px] leading-none grid">
@@ -74,7 +74,7 @@ const Plan = () => {
                     <em>₦{plans.subscribable.amount}</em>
                   </span>
                   ₦{plans.amount} <br />{" "}
-                  <small className=" text-[16px]">Yearly</small>
+                  <small className=" text-[16px]">Pay As You Go</small>
                 </p>
               </div>
 

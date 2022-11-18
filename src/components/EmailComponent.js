@@ -10,6 +10,9 @@ import Checkout from "./Checkout";
 import Success from "./Success";
 import { Toast } from "flowbite-react";
 import { HiCheck, HiX } from "react-icons/hi";
+import ForgotPassword from "./ForgotPassword";
+import Reset from "./Reset";
+import CodeReset from "./CodeReset";
 
 const EmailComponent = () => {
   // const [username, setUsername] = useState("");
@@ -53,6 +56,9 @@ const EmailComponent = () => {
     message,
     setMessage,
     setLoading,
+    isForgot,
+    isReset,
+    isCodeReset,
   } = useContext(AuthContext);
 
   const handleEmailVerify = (e) => {
@@ -260,6 +266,12 @@ const EmailComponent = () => {
           {isCheckout && <Checkout />}
 
           {isSuccess && <Success />}
+
+          {isForgot && <ForgotPassword />}
+
+          {isCodeReset && <CodeReset />}
+
+          {isReset && <Reset />}
         </div>
       </div>
     </div>

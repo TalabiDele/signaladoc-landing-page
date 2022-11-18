@@ -61,7 +61,7 @@ const Checkout = () => {
           <p className=" mb-3">
             Date: {moment(Date.now()).format("MMMM Do YYYY")}
           </p>
-          <p className=" mb-3">Plan: Family (Yearly)</p>
+          <p className=" mb-3">Pay As You Go</p>
           <p className=" mb-5">
             Price: <span className="">₦{plans.amount}</span>
           </p>
