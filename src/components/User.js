@@ -5,13 +5,44 @@ const User = () => {
   // const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { verifyTeleUser, loading, username, setUsername } =
-    useContext(AuthContext);
+  const {
+    verifyTeleUser,
+    loading,
+    username,
+    setUsername,
+    message,
+    setMessage,
+    error,
+    setError,
+  } = useContext(AuthContext);
 
   const handleVerifyUser = (e) => {
     e.preventDefault();
 
-    verifyTeleUser({ username, password });
+    if (username === "") {
+      setError(true);
+      setMessage("Username field is required!");
+
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+    } else if (password === "") {
+      setError(true);
+      setMessage("Password field is required!");
+
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+    } else if (password === "" && username === "") {
+      setError(true);
+      setMessage("Password and username fields required!");
+
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+    } else {
+      verifyTeleUser({ username, password });
+    }
   };
 
   return (

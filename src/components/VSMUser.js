@@ -5,12 +5,36 @@ const VSMUser = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { verifyUser } = useContext(AuthContext);
+  const { verifyUser, error, setError, setMessage, message } =
+    useContext(AuthContext);
 
   const handleVerifyUser = (e) => {
     e.preventDefault();
 
-    verifyUser({ username, password });
+    if (username === "") {
+      setError(true);
+      setMessage("Username field is required!");
+
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+    } else if (password === "") {
+      setError(true);
+      setMessage("Password field is required!");
+
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+    } else if (password === "" && username === "") {
+      setError(true);
+      setMessage("Password and username fields required!");
+
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+    } else {
+      verifyUser({ username, password });
+    }
   };
 
   return (
