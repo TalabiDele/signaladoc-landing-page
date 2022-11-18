@@ -12,9 +12,10 @@ import { Toast } from "flowbite-react";
 import { HiCheck, HiX } from "react-icons/hi";
 
 const EmailComponent = () => {
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
 
-  const { user, showBg, setShowBg } = useContext(AuthContext);
+  const { user, showBg, setShowBg, username, setUsername } =
+    useContext(AuthContext);
 
   useEffect(() => {
     if (user) {

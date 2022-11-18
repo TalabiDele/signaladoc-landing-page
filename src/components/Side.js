@@ -8,7 +8,7 @@ const Side = () => {
   return (
     <>
       <Bg>
-        <div className=" bg-[#1c278daf] w-[100%] h-[100vh] xs:h-[70vh] ss:h-[70vh]"></div>
+        <div className=" bg-primary mix-blend-multiply w-[100%] h-[100vh] xs:h-[70vh] ss:h-[70vh]"></div>
       </Bg>
       <button
         className={`${

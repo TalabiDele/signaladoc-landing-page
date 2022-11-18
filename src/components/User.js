@@ -2,10 +2,11 @@ import React, { useState, useContext } from "react";
 import AuthContext from "../Context/AuthContext";
 
 const User = () => {
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { verifyTeleUser, loading } = useContext(AuthContext);
+  const { verifyTeleUser, loading, username, setUsername } =
+    useContext(AuthContext);
 
   const handleVerifyUser = (e) => {
     e.preventDefault();

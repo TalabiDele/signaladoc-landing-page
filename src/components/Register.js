@@ -8,14 +8,28 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const { registerTele, userId, emailCode, loading, message, setMessage } =
-    useContext(AuthContext);
+  const {
+    registerTele,
+    userId,
+    emailCode,
+    loading,
+    message,
+    setMessage,
+    error,
+    setError,
+  } = useContext(AuthContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
       setMessage("Passwords do no match!");
+      setError(true);
+      console.log(message);
+
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
     } else {
       registerTele({
         username,
@@ -35,7 +49,7 @@ const Register = () => {
           <p className=" mb-5 text-[20px]">
             Create a strong password for your account
           </p>
-          <label
+          {/* <label
             htmlFor="username"
             className=" text-grey-text text-[12px] mb-2"
           >
@@ -49,7 +63,7 @@ const Register = () => {
             onChange={(e) => setUsername(e.target.value)}
             placeholder="johndoe@email.com"
             className=" border-none bg-input-blue rounded-md py-5 w-3/4 mb-10 lg:w-full sm:w-full xs:w-full ss:w-full  "
-          />
+          /> */}
           <label
             htmlFor="firstName"
             className=" text-grey-text text-[12px] mb-2"

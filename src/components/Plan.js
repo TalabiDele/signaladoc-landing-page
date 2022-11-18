@@ -60,7 +60,7 @@ const Plan = () => {
     <div>
       <div className=" mt-5 w-[90%] mx-auto">
         <p className=" text-center text-2xl mb-5">
-          Amazing Discount on Yearly plan
+          Enjoy Amazing discount on every consultation
         </p>
         <div className="">
           {plans && (

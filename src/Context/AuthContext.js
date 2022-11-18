@@ -27,6 +27,7 @@ export const AuthProvider = ({ children }) => {
   const [showBg, setShowBg] = useState(true);
   const [ref, setRef] = useState();
   const [isSuccess, setIsSuccess] = useState(false);
+  const [username, setUsername] = useState("");
 
   const validateEmail = async ({ username }) => {
     setLoading(true);
@@ -165,7 +166,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async ({
-    username,
     firstName,
     surname,
     password,
@@ -183,7 +183,6 @@ export const AuthProvider = ({ children }) => {
         registration_id: userId,
         first_name: firstName,
         surname: surname,
-        username,
         password,
         code: emailCode,
       }),
@@ -208,7 +207,7 @@ export const AuthProvider = ({ children }) => {
         setMessage("");
       }, 4000);
     } else {
-      if (data.username && data.first_name && data.surname && data.password) {
+      if (data.first_name && data.surname && data.password) {
         setMessage(`All fields are required!`);
       } else if (data.first_name && data.surname) {
         setMessage("The first name & surname fields are required!");
@@ -222,12 +221,6 @@ export const AuthProvider = ({ children }) => {
         setMessage(`${data.password[0]}`);
       } else if (data.first_name) {
         setMessage(`${data.surname[0]}`);
-      } else if (data.username && data.first_name) {
-        setMessage(`Username & First name fields required`);
-      } else if (data.username && data.surname) {
-        setMessage(`Username & last name fields required`);
-      } else if (data.username && data.password) {
-        setMessage(`Username & passowrds fields required`);
       }
 
       setError(true);
@@ -244,7 +237,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const registerTele = async ({
-    username,
     firstName,
     surname,
     password,
@@ -262,7 +254,6 @@ export const AuthProvider = ({ children }) => {
         registration_id: userId,
         first_name: firstName,
         surname: surname,
-        username,
         password,
         code: emailCode,
       }),
@@ -287,7 +278,7 @@ export const AuthProvider = ({ children }) => {
         setMessage("");
       }, 4000);
     } else {
-      if (data.username && data.first_name && data.surname && data.password) {
+      if (data.first_name && data.surname && data.password) {
         setMessage(`All fields are required!`);
       } else if (data.first_name && data.surname) {
         setMessage("The first name & surname fields are required!");
@@ -301,12 +292,6 @@ export const AuthProvider = ({ children }) => {
         setMessage(`${data.password[0]}`);
       } else if (data.first_name) {
         setMessage(`${data.surname[0]}`);
-      } else if (data.username && data.first_name) {
-        setMessage(`Username & First name fields required`);
-      } else if (data.username && data.surname) {
-        setMessage(`Username & last name fields required`);
-      } else if (data.username && data.password) {
-        setMessage(`Username & passowrds fields required`);
       }
 
       setError(true);
@@ -524,6 +509,8 @@ export const AuthProvider = ({ children }) => {
         verifytTeleUser,
         validateTeleEmail,
         registerTele,
+        username,
+        setUsername,
       }}
     >
       {children}
