@@ -344,7 +344,7 @@ export const AuthProvider = ({ children }) => {
       }, 4000);
     } else {
       setError(true);
-      setMessage(data.message);
+      setMessage(data.error);
 
       setTimeout(() => {
         setError(false);
@@ -399,7 +399,7 @@ export const AuthProvider = ({ children }) => {
       }, 4000);
     } else {
       setError(true);
-      setMessage(data.message);
+      setMessage(data.error);
 
       setTimeout(() => {
         setError(false);
