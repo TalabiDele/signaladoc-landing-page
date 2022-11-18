@@ -362,7 +362,7 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   };
 
-  const verifytTeleUser = async ({ username, password }) => {
+  const verifyTeleUser = async ({ username, password }) => {
     setLoading(true);
 
     const res = await fetch(`${TELEMEDICINE_URL}/user/verify`, {
@@ -506,7 +506,7 @@ export const AuthProvider = ({ children }) => {
         isSuccess,
         setIsSuccess,
         submitTelePayment,
-        verifytTeleUser,
+        verifyTeleUser,
         validateTeleEmail,
         registerTele,
         username,
