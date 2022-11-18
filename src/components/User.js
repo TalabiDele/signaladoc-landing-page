@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
 
 const User = () => {
@@ -14,7 +14,17 @@ const User = () => {
     setMessage,
     error,
     setError,
+    approved,
+    setApproved,
   } = useContext(AuthContext);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setApproved(false);
+    }, 3000);
+
+    console.log(approved);
+  }, []);
 
   const handleVerifyUser = (e) => {
     e.preventDefault();
