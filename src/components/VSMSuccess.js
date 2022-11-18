@@ -10,11 +10,11 @@ const VSMSuccess = () => {
       </div>
       <p className=" text-center text-3xl">Payment Successful</p>
 
-      <Link to="https://bit.ly/vitalsm">
+      <a href="https://bit.ly/vitalsm">
         <button className=" bg-gradient-to-b from-grad-light to-grad-dark text-[20px] text-white w-full py-4 rounded-md mt-5">
           Download VSM App
         </button>
-      </Link>
+      </a>
     </div>
   );
 };
