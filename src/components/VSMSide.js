@@ -9,7 +9,12 @@ const VSMSide = () => {
   return (
     <>
       <VsmBg>
-        <div className=" bg-primary mix-blend-multiply w-[100%] h-[100vh] xs:h-[70vh] ss:h-[70vh]"></div>
+        <div className=" bg-primary mix-blend-multiply w-[100%] h-[100vh] xs:h-[70vh] ss:h-[70vh] relative"></div>
+        <div className=" xs:block ss:block hidden text-white absolute top-56 text-center w-3/4 mx-auto right-0 left-0">
+          <h1 className=" text-5xl font-bold mb-4 ss:text-4xl">
+            Monitor Your Vital Signs Just By Looking At Your Phone!
+          </h1>
+        </div>
       </VsmBg>
       <button
         className={`${

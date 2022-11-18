@@ -25,15 +25,15 @@ const Nav = () => {
               className={` ${
                 isOpen
                   ? "rotate-[45deg] mb-0 right-0 bottom-2 xs:bg-primary ss:bg-primary"
-                  : ""
-              } h-[4px] w-[40px] bg-primary xs:bg-white ss:bg-white rounded-sm mb-2 absolute right-0 bottom-2 transition-all duration-200 ease-in-out`}
+                  : "xs:bg-white ss:bg-white"
+              } h-[4px] w-[40px] bg-primary rounded-sm mb-2 absolute right-0 bottom-2 transition-all duration-200 ease-in-out`}
             ></div>
             <div
               className={` ${
                 isOpen
                   ? "rotate-[135deg] mb-0 right-0 bottom-2 xs:bg-primary ss:bg-primary"
-                  : ""
-              } h-[4px] w-[40px] bg-primary xs:bg-white ss:bg-white rounded-sm mb-2 absolute right-0 bottom-0`}
+                  : "xs:bg-white ss:bg-white"
+              } h-[4px] w-[40px] bg-primary rounded-sm mb-2 absolute right-0 bottom-0`}
             ></div>
             <div
               className={` ${

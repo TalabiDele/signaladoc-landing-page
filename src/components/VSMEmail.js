@@ -84,7 +84,6 @@ const VSMEmail = () => {
           {isEmail && (
             <div className=" xs:hidden ss:hidden">
               <h1 className="font-bold text-5xl mb-10 lg:text-3xl sm:text-3xl sm:mb-5 ">
-                A{" "}
                 <span className=" text-primary">Monitor Your Vital Signs</span>{" "}
                 Just By Looking At Your Phone!
               </h1>
