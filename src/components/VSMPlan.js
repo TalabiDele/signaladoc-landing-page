@@ -4,19 +4,14 @@ import { API_URL } from "../Config";
 
 const VSMPlan = () => {
   const {
-    vsm,
-    teleMedicine,
     plans,
     setPlans,
     token,
-    loading,
     setLoading,
     setIsPlan,
     setIsCheckout,
     setStepThree,
     setDiscountId,
-    discountId,
-    ref,
   } = useContext(AuthContext);
 
   useEffect(() => {
@@ -39,10 +34,6 @@ const VSMPlan = () => {
     data.fees.forEach((e) => {
       setPlans(e);
       setDiscountId(e.id);
-
-      console.log(plans);
-      console.log(ref);
-      console.log(discountId);
     });
   };
 

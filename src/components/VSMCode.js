@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import AuthContext from "../Context/AuthContext";
+import { HiX } from "react-icons/hi";
 
 const VSMCode = () => {
   const [code, setCode] = useState();
@@ -14,19 +15,13 @@ const VSMCode = () => {
     setMessage,
     approved,
     setApproved,
-    isCode,
     setIsCode,
-    isDetails,
     setIsDetails,
-    isEmail,
     setIsEmail,
   } = useContext(AuthContext);
 
   const verifyCode = (e) => {
     e.preventDefault();
-
-    console.log(emailCode);
-    console.log(code);
     setLoading(true);
 
     if (emailCode !== code) {
@@ -66,9 +61,18 @@ const VSMCode = () => {
     setLoading(false);
   };
 
+  const closeModal = () => {
+    setIsCode(false);
+    setIsEmail(true);
+    setIsDetails(false);
+  };
+
   return (
     <div className="fixed bg-bg-light w-[100%] h-[100vh] top-0 bottom-0 left-0 grid items-center z-40">
-      <div className=" bg-white w-2/4 mx-auto rounded-lg p-20 ss:w-[90%] ss:p-5 xs:w-[90%] xs:p-5">
+      <div className=" bg-white w-2/4 mx-auto rounded-lg p-20 ss:w-[90%] ss:p-5 xs:w-[90%] xs:p-5 relative">
+        <div className=" absolute text-3xl right-5 top-5" onClick={closeModal}>
+          <HiX />
+        </div>
         <p>We sent you a code to verify your email address/phone number</p>
 
         {approved && (

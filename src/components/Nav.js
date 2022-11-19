@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import logo from "../imgs/logo.png";
-import { FiMenu } from "react-icons/fi";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
     setIsOpen(!isOpen);
-
-    console.log(isOpen);
   };
 
   return (
@@ -16,7 +13,6 @@ const Nav = () => {
       <div className=" xs:bg-primary ss:bg-primary h-20 left-0 right-0 fixed bg-none">
         <div className="flex justify-between items-center mx-auto w-[95%] fixed left-0 right-0 top-5 z-[60]">
           <img src={logo} alt="" />
-          {/* <FiMenu fontSize={30} /> */}
           <div
             className={` cursor-pointer relative z-[100]`}
             onClick={() => handleOpen()}
@@ -49,7 +45,7 @@ const Nav = () => {
         >
           <li className=" mb-10">
             <a
-              href="#"
+              href="https://www.signaladoc.com/about"
               className=" text-[16px] hover:border-b-2 hover:border-b-primary pb-3 transition-all duration-75 ease-in-out"
             >
               About us
@@ -57,7 +53,7 @@ const Nav = () => {
           </li>
           <li className=" mb-10 ">
             <a
-              href="#"
+              href="https://www.signaladoc.com/faq"
               className=" text-[16px] hover:border-b-2 hover:border-b-primary pb-3 transition-all duration-75 ease-in-out"
             >
               FAQ
@@ -65,7 +61,7 @@ const Nav = () => {
           </li>
           <li className=" mb-10 ">
             <a
-              href="#"
+              href="https://www.signaladoc.com/privacy-policy"
               className=" text-[16px] hover:border-b-2 hover:border-b-primary pb-3 transition-all duration-75 ease-in-out"
             >
               Privacy Policy
@@ -73,7 +69,7 @@ const Nav = () => {
           </li>
           <li className=" mb-10 ">
             <a
-              href="#"
+              href="https://signaladoc.com/vitalsignsmonitoring/terms-and-conditions"
               className=" text-[16px] hover:border-b-2 hover:border-b-primary pb-3 transition-all duration-75 ease-in-out"
             >
               Terms & Conditions

@@ -2,22 +2,13 @@ import React, { useState, useContext } from "react";
 import AuthContext from "../Context/AuthContext";
 
 const VSMRegister = () => {
-  const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [surname, setSurname] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const {
-    register,
-    userId,
-    emailCode,
-    message,
-    error,
-    setError,
-    setMessage,
-    loading,
-  } = useContext(AuthContext);
+  const { register, userId, emailCode, setError, setMessage, loading } =
+    useContext(AuthContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -25,13 +16,12 @@ const VSMRegister = () => {
     if (password !== confirmPassword) {
       setMessage("Passwords do no match!");
       setError(true);
-      console.log(message);
 
       setTimeout(() => {
         setError(false);
       }, 3000);
     } else {
-      register({ username, password, surname, firstName, userId, emailCode });
+      register({ password, surname, firstName, userId, emailCode });
     }
   };
 

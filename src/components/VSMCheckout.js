@@ -1,34 +1,23 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import AuthContext from "../Context/AuthContext";
 import moment from "moment";
 import { RAVE_KEY } from "../Config";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 
 const VSMCheckout = () => {
-  const [isPaid, setIsPaid] = useState(false);
-
-  const [paymentError, setPaymentError] = useState();
+  //   const [paymentError, setPaymentError] = useState();
 
   const {
     plans,
     user,
-    submitPayment,
     discountId,
-    setDiscountId,
     ref,
     setRef,
-    isSuccess,
     setIsSuccess,
     setIsCheckout,
+    isPaid,
+    setIsPaid,
   } = useContext(AuthContext);
-
-  useEffect(() => {
-    if (isPaid) {
-      submitPayment({ ref, discountId });
-    }
-  }, [isPaid, ref, discountId]);
-
-  console.log(user);
 
   const config = {
     public_key: RAVE_KEY,
@@ -38,13 +27,12 @@ const VSMCheckout = () => {
     payment_options: "card,mobilemoney,ussd",
     customer: {
       email: user.email,
-      //   phone_number: "070********",
+      phone_number: user.username,
       name: user.name,
     },
     customizations: {
       title: "Subscription",
       description: "Payment for VSM",
-      //   logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
     },
   };
 

@@ -1,19 +1,15 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import AuthContext from "../Context/AuthContext";
 
 const ForgotPassword = () => {
   const {
     setMessage,
     setLoading,
-    isForgot,
     username,
     setUsername,
     forgotPassword,
-    error,
     setError,
-    message,
     loading,
-    resendCode,
   } = useContext(AuthContext);
 
   const handleForgotPassword = () => {
@@ -28,16 +24,13 @@ const ForgotPassword = () => {
       }, 3000);
     }
 
-    console.log(username);
-
     forgotPassword({ username });
   };
-
-  const handleResend = () => {};
 
   return (
     <div>
       <form action="" className=" grid mt-10">
+        <h1 className="text-3xl font-bold mb-5">Forgot Password</h1>
         <p className=" text-[20px] mb-5 ss:text-lg">
           Enter Your Email Address or Phone Number
         </p>

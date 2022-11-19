@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import AuthContext from "../Context/AuthContext";
-import { Toast } from "flowbite-react";
-import { HiCheck, HiX } from "react-icons/hi";
+import { HiX } from "react-icons/hi";
 
 const CodeComponents = () => {
   const [code, setCode] = useState();
@@ -15,20 +14,14 @@ const CodeComponents = () => {
     setMessage,
     approved,
     setApproved,
-    isCode,
     setIsCode,
-    isDetails,
     setIsDetails,
-    isEmail,
     setIsEmail,
     message,
   } = useContext(AuthContext);
 
   const verifyCode = (e) => {
     e.preventDefault();
-
-    console.log(emailCode);
-    console.log(code);
     setLoading(true);
 
     if (emailCode !== code) {

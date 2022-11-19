@@ -2,22 +2,13 @@ import React, { useState, useContext } from "react";
 import AuthContext from "../Context/AuthContext";
 
 const Register = () => {
-  const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [surname, setSurname] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const {
-    registerTele,
-    userId,
-    emailCode,
-    loading,
-    message,
-    setMessage,
-    error,
-    setError,
-  } = useContext(AuthContext);
+  const { registerTele, userId, emailCode, loading, setMessage, setError } =
+    useContext(AuthContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -25,14 +16,12 @@ const Register = () => {
     if (password !== confirmPassword) {
       setMessage("Passwords do no match!");
       setError(true);
-      console.log(message);
 
       setTimeout(() => {
         setError(false);
       }, 3000);
     } else {
       registerTele({
-        username,
         password,
         surname,
         firstName,
