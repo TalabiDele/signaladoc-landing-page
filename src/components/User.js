@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
 
 const User = () => {
-  // const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const {
@@ -10,17 +9,11 @@ const User = () => {
     loading,
     username,
     setUsername,
-    message,
     setMessage,
-    error,
     setError,
     approved,
     setApproved,
-    isForgot,
-    isReset,
-    isCodeReset,
     setIsForgot,
-    setDetails,
     setUserExists,
   } = useContext(AuthContext);
 
@@ -28,8 +21,6 @@ const User = () => {
     setTimeout(() => {
       setApproved(false);
     }, 3000);
-
-    console.log(approved);
   }, []);
 
   const handleVerifyUser = (e) => {

@@ -3,17 +3,13 @@ import { useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
 
 const VSMUser = () => {
-  //   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const {
     verifyUser,
-    error,
     setError,
     setMessage,
-    message,
     setApproved,
-    approved,
     username,
     setUsername,
     setIsForgot,
@@ -24,8 +20,6 @@ const VSMUser = () => {
     setTimeout(() => {
       setApproved(false);
     }, 3000);
-
-    console.log(approved);
   }, []);
 
   const handleVerifyUser = (e) => {
