@@ -6,9 +6,7 @@ import { useLocation } from "react-router-dom";
 const CodeReset = () => {
   const [code, setCode] = useState();
 
-  const location = useLocation();
-
-  console.log(location.pathname);
+  //   const location = useLocation();
 
   const {
     emailCode,
@@ -19,11 +17,8 @@ const CodeReset = () => {
     setMessage,
     approved,
     setApproved,
-    isCode,
     setIsCode,
-    isDetails,
     setIsDetails,
-    isEmail,
     setIsEmail,
     message,
     setIsCodeReset,
@@ -79,9 +74,9 @@ const CodeReset = () => {
     setIsDetails(false);
   };
 
-  const handleResend = () => {
-    resendCode(userId);
-  };
+  //   const handleResend = () => {
+  //     resendCode(userId);
+  //   };
 
   return (
     <div className="fixed bg-bg-light w-[100%] h-[100vh] top-0 bottom-0 left-0 grid items-center z-40">

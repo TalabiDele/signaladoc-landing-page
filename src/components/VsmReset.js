@@ -7,15 +7,8 @@ const VsmReset = () => {
   const {
     setMessage,
     setLoading,
-    isForgot,
-    username,
-    setUsername,
-    forgotPassword,
-    error,
     setError,
-    message,
     loading,
-    resendCode,
     resetVsmPassword,
     userId,
   } = useContext(AuthContext);
@@ -38,6 +31,7 @@ const VsmReset = () => {
   return (
     <div>
       <form action="" className=" grid mt-10">
+        <h1 className="text-3xl font-bold mb-5">Reset Password</h1>
         <p className=" text-[20px] mb-5 ss:text-lg">Enter Your New Password</p>
         <label htmlFor="password" className=" text-grey-text text-[12px] mb-2">
           Password

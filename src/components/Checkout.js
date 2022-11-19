@@ -5,22 +5,19 @@ import { RAVE_KEY } from "../Config";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 
 const Checkout = () => {
-  const [isPaid, setIsPaid] = useState(false);
-
-  const [paymentError, setPaymentError] = useState();
-
-  const { loading, setLoading, isApproved, isError } = useContext(AuthContext);
+  //   const [paymentError, setPaymentError] = useState();
 
   const {
+    loading,
+    setLoading,
+    isPaid,
+    setIsPaid,
     plans,
     user,
     submitTelePayment,
     discountId,
-    setDiscountId,
     ref,
     setRef,
-    isSuccess,
-    isCheckout,
     setIsSuccess,
     setIsCheckout,
   } = useContext(AuthContext);
@@ -103,12 +100,9 @@ const Checkout = () => {
                     console.log(response.tx_ref);
                     setRef(response.tx_ref);
                     if (response.status === "successful") {
-                      console.log(discountId);
-                      console.log(ref);
                       setIsPaid(true);
                       setIsSuccess(true);
                       setIsCheckout(false);
-                      console.log(isPaid);
                     } else {
                       setIsPaid(false);
                     }

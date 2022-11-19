@@ -1,14 +1,25 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import AuthContext from "../Context/AuthContext";
 
 const Steps = () => {
-  const { stepOne, stepTwo, stepThree, isSuccess } = useContext(AuthContext);
+  const {
+    stepOne,
+    stepTwo,
+    stepThree,
+    isSuccess,
+    isForgot,
+    isCodeReset,
+    isReset,
+    isVsmReset,
+  } = useContext(AuthContext);
 
   return (
     <div>
       <div
         className={`${
-          isSuccess ? "hidden" : ""
+          isSuccess || isForgot || isCodeReset || isReset || isVsmReset
+            ? "hidden"
+            : ""
         } flex w-[30rem] items-center sm:w-[20rem] xs:w-[15rem] ss:w-[18rem]`}
       >
         <p

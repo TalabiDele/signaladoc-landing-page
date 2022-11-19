@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import Side from "./Side";
 import Steps from "./Steps";
 import AuthContext from "../Context/AuthContext";
@@ -8,48 +8,23 @@ import User from "./User";
 import Plan from "./Plan";
 import Checkout from "./Checkout";
 import Success from "./Success";
-import { Toast } from "flowbite-react";
-import { HiCheck, HiX } from "react-icons/hi";
 import ForgotPassword from "./ForgotPassword";
 import Reset from "./Reset";
 import CodeReset from "./CodeReset";
 
 const EmailComponent = () => {
-  // const [username, setUsername] = useState("");
-
-  const { user, showBg, setShowBg, username, setUsername } =
-    useContext(AuthContext);
-
-  useEffect(() => {
-    if (user) {
-      console.log(user);
-    } else {
-      console.log("Not User");
-    }
-  }, []);
+  const { showBg, username, setUsername } = useContext(AuthContext);
 
   const {
-    stepOne,
-    setStepOne,
-    stepTwo,
-    setStepTwo,
-    stepThree,
-    setStepThree,
     isEmail,
-    setIsEmail,
     isCode,
-    setIsCode,
     isDetails,
-    setIsDetails,
     validateTeleEmail,
     userExists,
     isPlan,
-    setIsPlan,
     isCheckout,
-    setIsCheckout,
     isSuccess,
     loading,
-    setIsSuccess,
     approved,
     error,
     setError,
@@ -74,8 +49,6 @@ const EmailComponent = () => {
         setLoading(false);
       }, 3000);
     }
-
-    console.log(username);
 
     validateTeleEmail({ username });
   };

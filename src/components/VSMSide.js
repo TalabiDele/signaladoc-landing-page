@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import image from "../imgs/telemedicine.png";
 import { VsmBg } from "./style";
 import AuthContext from "../Context/AuthContext";
 

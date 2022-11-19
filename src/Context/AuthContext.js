@@ -1,6 +1,5 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import { API_URL, AUTH_API, TELEMEDICINE_URL } from "../Config";
-import axios from "axios";
 
 const AuthContext = createContext();
 
@@ -31,7 +30,7 @@ export const AuthProvider = ({ children }) => {
   const [isForgot, setIsForgot] = useState(false);
   const [isReset, setIsReset] = useState(false);
   const [isCodeReset, setIsCodeReset] = useState(false);
-  const [isVsm, setIsVsm] = useState(false);
+  const [isPaid, setIsPaid] = useState(false);
 
   const validateEmail = async ({ username }) => {
     setLoading(true);
@@ -45,8 +44,6 @@ export const AuthProvider = ({ children }) => {
     });
 
     const data = await res.json();
-
-    console.log(data);
 
     if (res.ok) {
       if (data.exists) {
@@ -73,11 +70,7 @@ export const AuthProvider = ({ children }) => {
 
         setEmailCode(data.data.code);
 
-        console.log(data);
-
         setUserId(data.data.id);
-
-        console.log(userId);
         setIsCode(true);
 
         setIsDetails(true);
@@ -86,8 +79,6 @@ export const AuthProvider = ({ children }) => {
       setError(true);
 
       setMessage(data.email[0]);
-
-      console.log(message);
 
       setTimeout(() => {
         setMessage("");
@@ -114,8 +105,6 @@ export const AuthProvider = ({ children }) => {
 
     const data = await res.json();
 
-    console.log(data);
-
     if (res.ok) {
       if (data.exists) {
         setApproved(true);
@@ -141,11 +130,7 @@ export const AuthProvider = ({ children }) => {
 
         setEmailCode(data.data.code);
 
-        console.log(data);
-
         setUserId(data.data.id);
-
-        console.log(userId);
         setIsCode(true);
 
         setIsDetails(true);
@@ -154,8 +139,6 @@ export const AuthProvider = ({ children }) => {
       setError(true);
 
       setMessage(data.email[0]);
-
-      console.log(message);
 
       setTimeout(() => {
         setMessage("");
@@ -192,8 +175,6 @@ export const AuthProvider = ({ children }) => {
       }),
     });
 
-    console.log(res);
-
     const data = await res.json();
 
     if (res.ok) {
@@ -203,7 +184,6 @@ export const AuthProvider = ({ children }) => {
       setIsPlan(true);
       setIsDetails(false);
       setUser(data.user);
-      console.log(user);
       setStepTwo(true);
       setToken(data.access_token);
       setTimeout(() => {
@@ -234,8 +214,6 @@ export const AuthProvider = ({ children }) => {
         setMessage("");
       }, 4000);
     }
-
-    console.log(data);
 
     setLoading(false);
   };
@@ -263,8 +241,6 @@ export const AuthProvider = ({ children }) => {
       }),
     });
 
-    console.log(res);
-
     const data = await res.json();
 
     if (res.ok) {
@@ -274,7 +250,6 @@ export const AuthProvider = ({ children }) => {
       setIsPlan(true);
       setIsDetails(false);
       setUser(data.user);
-      console.log(user);
       setStepTwo(true);
       setToken(data.access_token);
       setTimeout(() => {
@@ -305,8 +280,6 @@ export const AuthProvider = ({ children }) => {
         setMessage("");
       }, 4000);
     }
-
-    console.log(data);
 
     setLoading(false);
   };
@@ -336,11 +309,8 @@ export const AuthProvider = ({ children }) => {
       setStepTwo(true);
       setUserExists(false);
       setUser(data.user);
-      console.log(user);
       setIsPlan(true);
       setToken(data.access_token);
-
-      console.log(stepTwo);
 
       setTimeout(() => {
         setMessage("");
@@ -360,8 +330,6 @@ export const AuthProvider = ({ children }) => {
       setMessage("");
       setApproved(false);
     }, 4000);
-
-    console.log(data);
 
     setLoading(false);
   };
@@ -391,11 +359,8 @@ export const AuthProvider = ({ children }) => {
       setStepTwo(true);
       setUserExists(false);
       setUser(data.user);
-      console.log(user);
       setIsPlan(true);
       setToken(data.access_token);
-
-      console.log(stepTwo);
 
       setTimeout(() => {
         setMessage("");
@@ -416,12 +381,10 @@ export const AuthProvider = ({ children }) => {
       setApproved(false);
     }, 4000);
 
-    console.log(data);
-
     setLoading(false);
   };
 
-  const submitPayment = async ({ ref, discountId }) => {
+  const submitVsmPayment = async ({ ref, discountId }) => {
     setLoading(true);
 
     const res = await fetch(`${API_URL}/subscription/verify`, {
@@ -437,8 +400,6 @@ export const AuthProvider = ({ children }) => {
     });
 
     const data = await res.json();
-
-    console.log(data);
   };
 
   const submitTelePayment = async ({ ref, discountId }) => {
@@ -457,8 +418,6 @@ export const AuthProvider = ({ children }) => {
     });
 
     const data = await res.json();
-
-    console.log(data);
   };
 
   const forgotPassword = async ({ username }) => {
@@ -482,8 +441,6 @@ export const AuthProvider = ({ children }) => {
       setEmailCode(data.code);
       setUserId(data.user_id);
 
-      console.log(data.user_id);
-
       setTimeout(() => {
         setApproved(false);
         setIsCodeReset(true);
@@ -500,8 +457,6 @@ export const AuthProvider = ({ children }) => {
     setUserId(data.user_id);
 
     setLoading(false);
-
-    console.log(data);
   };
 
   const resetVsmPassword = async ({ userId, password }) => {
@@ -537,8 +492,6 @@ export const AuthProvider = ({ children }) => {
     }
 
     setLoading(false);
-
-    console.log(data);
   };
 
   const resetTelePassword = async ({ userId, password }) => {
@@ -573,8 +526,6 @@ export const AuthProvider = ({ children }) => {
     }
 
     setLoading(false);
-
-    console.log(data);
   };
 
   const resendCode = async ({ userId }) => {
@@ -598,8 +549,6 @@ export const AuthProvider = ({ children }) => {
     setTimeout(() => {
       setApproved(false);
     }, 4000);
-
-    console.log(data);
   };
 
   return (
@@ -641,7 +590,6 @@ export const AuthProvider = ({ children }) => {
         isCheckout,
         setIsCheckout,
         user,
-        submitPayment,
         discountId,
         setDiscountId,
         showBg,
@@ -666,6 +614,9 @@ export const AuthProvider = ({ children }) => {
         setIsCodeReset,
         isCodeReset,
         resendCode,
+        isPaid,
+        setIsPaid,
+        submitVsmPayment,
       }}
     >
       {children}

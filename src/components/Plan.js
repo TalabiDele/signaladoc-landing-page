@@ -1,15 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
-import { API_URL, TELEMEDICINE_URL } from "../Config";
+import { TELEMEDICINE_URL } from "../Config";
 
 const Plan = () => {
   const {
-    vsm,
-    teleMedicine,
     plans,
     setPlans,
     token,
-    loading,
     setLoading,
     setIsPlan,
     setIsCheckout,
@@ -39,10 +36,6 @@ const Plan = () => {
     data.fees.forEach((e) => {
       setPlans(e);
       setDiscountId(e.id);
-
-      console.log(plans);
-      console.log(ref);
-      console.log(discountId);
     });
 
     setTimeout(() => {

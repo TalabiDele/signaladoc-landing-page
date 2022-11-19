@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import Steps from "./Steps";
 import AuthContext from "../Context/AuthContext";
 import VSMCode from "./VSMCode";
@@ -13,43 +13,22 @@ import CodeReset from "./CodeReset";
 import VsmReset from "./VsmReset";
 
 const VSMEmail = () => {
-  const { user, showBg, setShowBg } = useContext(AuthContext);
-
-  useEffect(() => {
-    if (user) {
-      console.log(user);
-    } else {
-      console.log("Not User");
-    }
-  }, []);
+  const { showBg } = useContext(AuthContext);
 
   const {
-    stepOne,
-    setStepOne,
-    stepTwo,
-    setStepTwo,
-    stepThree,
-    setStepThree,
     isEmail,
-    setIsEmail,
     isCode,
-    setIsCode,
     isDetails,
-    setIsDetails,
     validateEmail,
     userExists,
     isPlan,
-    setIsPlan,
     isCheckout,
-    setIsCheckout,
     isSuccess,
-    setIsSuccess,
     error,
     approved,
     message,
     setError,
     setMessage,
-    setApproved,
     loading,
     setLoading,
     isForgot,
@@ -72,8 +51,6 @@ const VSMEmail = () => {
         setLoading(false);
       }, 3000);
     }
-
-    console.log(username);
 
     validateEmail({ username });
   };
